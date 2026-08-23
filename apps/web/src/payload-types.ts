@@ -188,7 +188,7 @@ export interface Feature {
     [k: string]: unknown;
   };
   category: 'trigger' | 'camera' | 'automation' | 'connectivity' | 'system';
-  status: 'planned' | 'design' | 'prototype' | 'testing' | 'ready';
+  developmentStatus: 'planned' | 'design' | 'prototype' | 'testing' | 'ready';
   image?: (number | null) | Media;
   featured?: boolean | null;
   order: number;
@@ -328,7 +328,7 @@ export interface FeaturesSelect<T extends boolean = true> {
   summary?: T;
   description?: T;
   category?: T;
-  status?: T;
+  developmentStatus?: T;
   image?: T;
   featured?: T;
   order?: T;

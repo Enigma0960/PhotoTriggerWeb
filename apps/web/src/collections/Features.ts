@@ -5,7 +5,13 @@ export const Features: CollectionConfig = {
 
     admin: {
         useAsTitle: 'title',
-        defaultColumns: ['title', 'category', 'status', 'featured', 'order'],
+        defaultColumns: [
+            'title',
+            'category',
+            'developmentStatus',
+            'featured',
+            'order',
+        ],
     },
 
     versions: {
@@ -69,7 +75,8 @@ export const Features: CollectionConfig = {
         },
 
         {
-            name: 'status',
+            name: 'developmentStatus',
+            label: 'Development Status',
             type: 'select',
             required: true,
             defaultValue: 'planned',
