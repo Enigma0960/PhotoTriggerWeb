@@ -3,6 +3,18 @@ import type { CollectionConfig } from 'payload'
 export const Features: CollectionConfig = {
     slug: 'features',
 
+    labels: {
+        singular: {
+            en: 'Feature',
+            ru: 'Возможность',
+        },
+
+        plural: {
+            en: 'Features',
+            ru: 'Возможности',
+        },
+    },
+
     admin: {
         useAsTitle: 'title',
         defaultColumns: [
@@ -22,12 +34,21 @@ export const Features: CollectionConfig = {
     fields: [
         {
             name: 'title',
+            label: {
+                en: 'Title',
+                ru: 'Название',
+            },
             type: 'text',
             required: true,
+            localized: true,
         },
 
         {
             name: 'slug',
+            label: {
+                en: 'Slug',
+                ru: 'Slug',
+            },
             type: 'text',
             required: true,
             unique: true,
@@ -36,39 +57,68 @@ export const Features: CollectionConfig = {
 
         {
             name: 'summary',
+            label: {
+                en: 'Summary',
+                ru: 'Краткое описание',
+            },
             type: 'textarea',
             required: true,
+            localized: true,
         },
 
         {
             name: 'description',
+            label: {
+                en: 'Description',
+                ru: 'Описание',
+            },
             type: 'richText',
             required: true,
+            localized: true,
         },
 
         {
             name: 'category',
+            label: {
+                en: 'Category',
+                ru: 'Категория',
+            },
             type: 'select',
             required: true,
             options: [
                 {
-                    label: 'Trigger',
+                    label: {
+                        en: 'Trigger',
+                        ru: 'Триггер',
+                    },
                     value: 'trigger',
                 },
                 {
-                    label: 'Camera',
+                    label: {
+                        en: 'Camera',
+                        ru: 'Камера',
+                    },
                     value: 'camera',
                 },
                 {
-                    label: 'Automation',
+                    label: {
+                        en: 'Automation',
+                        ru: 'Автоматизация',
+                    },
                     value: 'automation',
                 },
                 {
-                    label: 'Connectivity',
+                    label: {
+                        en: 'Connectivity',
+                        ru: 'Подключение',
+                    },
                     value: 'connectivity',
                 },
                 {
-                    label: 'System',
+                    label: {
+                        en: 'System',
+                        ru: 'Система',
+                    },
                     value: 'system',
                 },
             ],
@@ -76,29 +126,49 @@ export const Features: CollectionConfig = {
 
         {
             name: 'developmentStatus',
-            label: 'Development Status',
+
+            label: {
+                en: 'Development Status',
+                ru: 'Статус разработки',
+            },
+
             type: 'select',
             required: true,
             defaultValue: 'planned',
             options: [
                 {
-                    label: 'Planned',
+                    label: {
+                        en: 'Planned',
+                        ru: 'Запланировано',
+                    },
                     value: 'planned',
                 },
                 {
-                    label: 'Design',
+                    label: {
+                        en: 'Design',
+                        ru: 'Проектирование',
+                    },
                     value: 'design',
                 },
                 {
-                    label: 'Prototype',
+                    label: {
+                        en: 'Prototype',
+                        ru: 'Прототип',
+                    },
                     value: 'prototype',
                 },
                 {
-                    label: 'Testing',
+                    label: {
+                        en: 'Testing',
+                        ru: 'Тестирование',
+                    },
                     value: 'testing',
                 },
                 {
-                    label: 'Ready',
+                    label: {
+                        en: 'Ready',
+                        ru: 'Готово',
+                    },
                     value: 'ready',
                 },
             ],
@@ -106,18 +176,30 @@ export const Features: CollectionConfig = {
 
         {
             name: 'image',
+            label: {
+                en: 'Image',
+                ru: 'Изображение',
+            },
             type: 'upload',
             relationTo: 'media',
         },
 
         {
             name: 'featured',
+            label: {
+                en: 'Featured',
+                ru: 'Основная возможность',
+            },
             type: 'checkbox',
             defaultValue: false,
         },
 
         {
             name: 'order',
+            label: {
+                en: 'Order',
+                ru: 'Порядок',
+            },
             type: 'number',
             defaultValue: 100,
             required: true,
@@ -125,6 +207,10 @@ export const Features: CollectionConfig = {
 
         {
             name: 'documentationPath',
+            label: {
+                en: 'Documentation Path',
+                ru: 'Путь в документации',
+            },
             type: 'text',
             admin: {
                 description:
