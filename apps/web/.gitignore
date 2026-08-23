@@ -1,32 +1,7 @@
-# Nestjs specific
-/dist
-/node_modules
-/build
-/tmp
-
-# Logs
-logs
-*.log
-npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-
-# dotenv environment variable files
-.env
-.env.development
-.env.test
-.env.production
-
-# temp directory
-.temp
-.tmp
-
-
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+/node_modules
 /.pnp
 .pnp.js
 .yarn/install-state.gz
@@ -41,10 +16,17 @@ lerna-debug.log*
 /.next/
 /out/
 
+# production
+/build
 
 # misc
 .DS_Store
 *.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # local env files
 .env*.local
@@ -56,6 +38,7 @@ lerna-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 
+.env
 
 /media
 

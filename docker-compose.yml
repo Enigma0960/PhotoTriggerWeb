@@ -1,0 +1,31 @@
+services:
+
+    postgres:
+        image: postgres:17-alpine
+
+        restart: unless-stopped
+
+        environment:
+            POSTGRES_DB: phototrigger
+            POSTGRES_USER: phototriggerpnpm dev
+            POSTGRES_PASSWORD: phototrigger_dev
+
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+
+        ports:
+            - "127.0.0.1:5432:5432"
+
+        healthcheck:
+            test:
+              [
+                  "CMD-SHELL",
+                  "pg_isready -U phototrigger -d phototrigger"
+              ]
+            interval: 5s
+            timeout: 5s
+            retries: 10
+
+
+volumes:
+    postgres_data:

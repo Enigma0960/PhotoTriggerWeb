@@ -1,0 +1,10 @@
+{
+  "name": "phototrigger-web",
+  "private": true,
+  "scripts": {
+    "dev:web": "pnpm --dir apps/web dev",
+    "dev:docs": "pnpm --dir apps/docs dev",
+    "build:web": "pnpm --dir apps/web build",
+    "build:docs": "pnpm --dir apps/docs build"
+  }
+}
