@@ -1,5 +1,4 @@
 services:
-
     postgres:
         image: postgres:17-alpine
 
@@ -7,7 +6,7 @@ services:
 
         environment:
             POSTGRES_DB: phototrigger
-            POSTGRES_USER: phototriggerpnpm dev
+            POSTGRES_USER: phototrigger
             POSTGRES_PASSWORD: phototrigger_dev
 
         volumes:
@@ -25,7 +24,6 @@ services:
             interval: 5s
             timeout: 5s
             retries: 10
-
 
 volumes:
     postgres_data:
