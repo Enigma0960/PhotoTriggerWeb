@@ -6,6 +6,8 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(__filename)
 
+const workspaceRoot = path.resolve(dirname, '../..')
+
 const nextConfig: NextConfig = {
   images: {
     localPatterns: [
@@ -14,6 +16,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],
@@ -23,9 +26,12 @@ const nextConfig: NextConfig = {
 
     return webpackConfig
   },
+
   turbopack: {
-    root: path.resolve(dirname),
+    root: workspaceRoot,
   },
 }
 
-export default withPayload(nextConfig, { devBundleServerPackages: false })
+export default withPayload(nextConfig, {
+  devBundleServerPackages: false,
+})
