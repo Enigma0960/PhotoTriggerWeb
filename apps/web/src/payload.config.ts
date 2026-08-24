@@ -8,16 +8,20 @@ import sharp from 'sharp'
 import { en } from '@payloadcms/translations/languages/en'
 import { ru } from '@payloadcms/translations/languages/ru'
 
+import { AnalyticsSettings } from './globals/AnalyticsSettings'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { HomePage } from './globals/HomePage'
 import { Roadmap } from './globals/Roadmap'
 import { SiteSettings } from './globals/SiteSettings'
+import { SupportPage } from './globals/SupportPage'
 
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
-import { Features } from './collections/Features'
 import { DevBlogPosts } from './collections/DevBlogPosts'
+import { Features } from './collections/Features'
+import { FeedbackMessages } from './collections/FeedbackMessages'
+import { Media } from './collections/Media'
+import { SiteEvents } from './collections/SiteEvents'
+import { Users } from './collections/Users'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -71,8 +75,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Features, DevBlogPosts],
-  globals: [SiteSettings, Header, Footer, HomePage, Roadmap],
+  collections: [Users, Media, Features, DevBlogPosts, FeedbackMessages, SiteEvents],
+  globals: [SiteSettings, Header, Footer, HomePage, Roadmap, SupportPage, AnalyticsSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -82,6 +86,9 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
+    // Миграции - источник правды для схемы БД.
+    // Автоматический dev push можно включить явно, если он нужен разово.
+    push: process.env.PAYLOAD_SCHEMA_PUSH === 'true',
   }),
   sharp,
   plugins: [],

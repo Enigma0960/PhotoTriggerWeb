@@ -71,6 +71,8 @@ export interface Config {
     media: Media;
     features: Feature;
     'dev-blog-posts': DevBlogPost;
+    'feedback-messages': FeedbackMessage;
+    'site-events': SiteEvent;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,6 +84,8 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     features: FeaturesSelect<false> | FeaturesSelect<true>;
     'dev-blog-posts': DevBlogPostsSelect<false> | DevBlogPostsSelect<true>;
+    'feedback-messages': FeedbackMessagesSelect<false> | FeedbackMessagesSelect<true>;
+    'site-events': SiteEventsSelect<false> | SiteEventsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -97,6 +101,8 @@ export interface Config {
     footer: Footer;
     'home-page': HomePage;
     roadmap: Roadmap;
+    'support-page': SupportPage;
+    'analytics-settings': AnalyticsSettings;
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
@@ -104,6 +110,8 @@ export interface Config {
     footer: FooterSelect<false> | FooterSelect<true>;
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
     roadmap: RoadmapSelect<false> | RoadmapSelect<true>;
+    'support-page': SupportPageSelect<false> | SupportPageSelect<true>;
+    'analytics-settings': AnalyticsSettingsSelect<false> | AnalyticsSettingsSelect<true>;
   };
   locale: 'en' | 'ru';
   widgets: {
@@ -263,6 +271,38 @@ export interface DevBlogPost {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "feedback-messages".
+ */
+export interface FeedbackMessage {
+  id: number;
+  name: string;
+  email?: string | null;
+  message: string;
+  locale: 'en' | 'ru';
+  status: 'new' | 'reviewed' | 'spam' | 'archived';
+  adminNotes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-events".
+ */
+export interface SiteEvent {
+  id: number;
+  eventType: 'page_view' | 'navigation_click' | 'external_click';
+  locale: 'en' | 'ru';
+  path: string;
+  target?: string | null;
+  title?: string | null;
+  referrer?: string | null;
+  sessionId?: string | null;
+  userAgent?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -300,6 +340,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'dev-blog-posts';
         value: number | DevBlogPost;
+      } | null)
+    | ({
+        relationTo: 'feedback-messages';
+        value: number | FeedbackMessage;
+      } | null)
+    | ({
+        relationTo: 'site-events';
+        value: number | SiteEvent;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -418,6 +466,36 @@ export interface DevBlogPostsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "feedback-messages_select".
+ */
+export interface FeedbackMessagesSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  message?: T;
+  locale?: T;
+  status?: T;
+  adminNotes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-events_select".
+ */
+export interface SiteEventsSelect<T extends boolean = true> {
+  eventType?: T;
+  locale?: T;
+  path?: T;
+  target?: T;
+  title?: T;
+  referrer?: T;
+  sessionId?: T;
+  userAgent?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -596,6 +674,51 @@ export interface Roadmap {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "support-page".
+ */
+export interface SupportPage {
+  id: number;
+  eyebrow?: string | null;
+  title?: string | null;
+  intro?: string | null;
+  supportOptionsTitle?: string | null;
+  supportOptionsIntro?: string | null;
+  supportOptions?:
+    | {
+        title?: string | null;
+        text?: string | null;
+        /**
+         * Например: /feedback, /dev-blog или https://example.com.
+         */
+        href: string;
+        ctaLabel?: string | null;
+        newTab?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  feedbackCtaTitle?: string | null;
+  feedbackCtaText?: string | null;
+  feedbackCtaButton?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "analytics-settings".
+ */
+export interface AnalyticsSettings {
+  id: number;
+  googleAnalyticsEnabled?: boolean | null;
+  /**
+   * GA4 identifier, for example G-XXXXXXXXXX.
+   */
+  googleAnalyticsMeasurementId?: string | null;
+  googleAnalyticsAnonymizeIp?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-settings_select".
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
@@ -719,6 +842,45 @@ export interface RoadmapSelect<T extends boolean = true> {
         isCurrent?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "support-page_select".
+ */
+export interface SupportPageSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  intro?: T;
+  supportOptionsTitle?: T;
+  supportOptionsIntro?: T;
+  supportOptions?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        href?: T;
+        ctaLabel?: T;
+        newTab?: T;
+        id?: T;
+      };
+  feedbackCtaTitle?: T;
+  feedbackCtaText?: T;
+  feedbackCtaButton?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "analytics-settings_select".
+ */
+export interface AnalyticsSettingsSelect<T extends boolean = true> {
+  googleAnalyticsEnabled?: T;
+  googleAnalyticsMeasurementId?: T;
+  googleAnalyticsAnonymizeIp?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

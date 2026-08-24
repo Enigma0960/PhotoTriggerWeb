@@ -94,6 +94,55 @@ const messages = {
       statusText:
         'The architecture, main components, power domains, trigger paths, and camera outputs are defined in the project documentation. The next important step is proving the design on a physical Rev.A prototype.',
     },
+    support: {
+      eyebrow: 'Support',
+      title: 'Support Project Iris',
+      intro:
+        'Help turn PhotoTrigger Rev.A from a documented design into tested hardware, firmware and field-ready camera workflows.',
+      supportOptionsTitle: 'Ways to support the project',
+      supportOptionsIntro:
+        'The most useful support right now is practical feedback, testing ideas and help finding real shooting scenarios.',
+      supportOptions: [
+        {
+          title: 'Send an idea',
+          text: 'Describe a camera scenario, sensor setup or field problem that PhotoTrigger should support.',
+          href: '/feedback',
+          ctaLabel: 'Open feedback',
+        },
+        {
+          title: 'Follow development',
+          text: 'Read engineering notes and implementation updates as the prototype moves forward.',
+          href: '/dev-blog',
+          ctaLabel: 'Read dev blog',
+        },
+        {
+          title: 'Check the roadmap',
+          text: 'See which milestones are done, current and planned before suggesting the next priority.',
+          href: '/roadmap',
+          ctaLabel: 'Open roadmap',
+        },
+      ],
+      feedbackCtaTitle: 'Have a suggestion or question?',
+      feedbackCtaText:
+        'Leave a message from the feedback page. It will be saved privately and reviewed in the admin panel.',
+      feedbackCtaButton: 'Leave feedback',
+    },
+    feedback: {
+      eyebrow: 'Feedback',
+      title: 'Feedback',
+      intro:
+        'Leave a message, project idea or question. Your note will be saved for review in the admin panel.',
+      formTitle: 'Message form',
+      formIntro:
+        'Short, specific notes are the most useful: camera model, shooting scenario, trigger source or feature request.',
+      nameLabel: 'Name',
+      emailLabel: 'Email, optional',
+      messageLabel: 'Message',
+      submit: 'Send message',
+      success: 'Thank you. Your message has been saved.',
+      validationError: 'Please add your name and a message of at least 10 characters.',
+      failedError: 'The message could not be saved. Please try again later.',
+    },
     roadmap: {
       title: 'Project roadmap',
       intro:
@@ -222,6 +271,55 @@ const messages = {
       statusTitle: 'Rev.A проектируется как первая аппаратная ревизия',
       statusText:
         'В документации уже определены архитектура, основные компоненты, домены питания, триггерные тракты и выходы камеры. Следующий важный шаг - подтвердить решения на физическом прототипе Rev.A.',
+    },
+    support: {
+      eyebrow: 'Поддержка',
+      title: 'Поддержать Project Iris',
+      intro:
+        'Помогите довести PhotoTrigger Rev.A от описанного проекта до проверенного железа, прошивки и рабочих сценариев съемки.',
+      supportOptionsTitle: 'Как можно поддержать проект',
+      supportOptionsIntro:
+        'Сейчас особенно полезны практическая обратная связь, идеи тестирования и реальные сценарии съемки.',
+      supportOptions: [
+        {
+          title: 'Отправить идею',
+          text: 'Опишите сценарий съемки, набор датчиков или полевую проблему, которую должен закрывать PhotoTrigger.',
+          href: '/feedback',
+          ctaLabel: 'Открыть форму',
+        },
+        {
+          title: 'Следить за разработкой',
+          text: 'Читайте инженерные заметки и обновления реализации по мере движения к прототипу.',
+          href: '/dev-blog',
+          ctaLabel: 'Читать dev-blog',
+        },
+        {
+          title: 'Посмотреть роадмап',
+          text: 'Проверьте выполненные, текущие и запланированные этапы перед предложением следующего приоритета.',
+          href: '/roadmap',
+          ctaLabel: 'Открыть роадмап',
+        },
+      ],
+      feedbackCtaTitle: 'Есть предложение или вопрос?',
+      feedbackCtaText:
+        'Оставьте сообщение на странице обратной связи. Оно сохранится приватно и будет видно в админ-панели.',
+      feedbackCtaButton: 'Оставить сообщение',
+    },
+    feedback: {
+      eyebrow: 'Обратная связь',
+      title: 'Обратная связь',
+      intro:
+        'Оставьте сообщение, идею по проекту или вопрос. Запись сохранится для просмотра в админ-панели.',
+      formTitle: 'Форма сообщения',
+      formIntro:
+        'Лучше всего помогают конкретные заметки: модель камеры, сценарий съемки, источник триггера или запрос функции.',
+      nameLabel: 'Имя',
+      emailLabel: 'Email, необязательно',
+      messageLabel: 'Сообщение',
+      submit: 'Отправить сообщение',
+      success: 'Спасибо. Сообщение сохранено.',
+      validationError: 'Укажите имя и сообщение длиной не менее 10 символов.',
+      failedError: 'Не удалось сохранить сообщение. Попробуйте позже.',
     },
     roadmap: {
       title: 'Роадмап проекта',

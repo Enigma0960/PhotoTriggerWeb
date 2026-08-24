@@ -4,6 +4,7 @@ import * as migration_20260823_125436_i18n_localized_fields from './20260823_125
 import * as migration_20260824_035559_add_roadmap from './20260824_035559_add_roadmap'
 import * as migration_20260824_042140_add_dev_blog from './20260824_042140_add_dev_blog'
 import * as migration_20260824_105535_add_home_page from './20260824_105535_add_home_page'
+import * as migration_20260824_121548_add_support_feedback_analytics_site_events from './20260824_121548_add_support_feedback_analytics_site_events'
 
 export const migrations = [
   {
@@ -35,5 +36,10 @@ export const migrations = [
     up: migration_20260824_105535_add_home_page.up,
     down: migration_20260824_105535_add_home_page.down,
     name: '20260824_105535_add_home_page',
+  },
+  {
+    up: migration_20260824_121548_add_support_feedback_analytics_site_events.up,
+    down: migration_20260824_121548_add_support_feedback_analytics_site_events.down,
+    name: '20260824_121548_add_support_feedback_analytics_site_events',
   },
 ]

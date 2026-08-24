@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 
+import { SiteAnalyticsTracker } from '@/components/SiteAnalyticsTracker'
 import { SiteFooter } from '@/components/SiteFooter'
 import { SiteHeader } from '@/components/SiteHeader'
 import { isLocale, locales } from '@/i18n/config'
@@ -29,6 +30,18 @@ const themeInitScript = `
   }
 })();
 `
+
+function createGoogleAnalyticsScript(measurementId: string, anonymizeIp: boolean) {
+  const measurementIdLiteral = JSON.stringify(measurementId)
+  const config = anonymizeIp ? ', {"anonymize_ip":true}' : ''
+
+  return `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', ${measurementIdLiteral}${config});
+`
+}
 
 type Props = {
   children: ReactNode
@@ -79,7 +92,11 @@ export default async function RootLayout({ children, params }: Props) {
     notFound()
   }
 
-  const { settings, header, footer } = await getSiteGlobals(locale)
+  const { analytics, settings, header, footer } = await getSiteGlobals(locale)
+  const googleAnalyticsMeasurementId =
+    analytics?.googleAnalyticsEnabled && analytics.googleAnalyticsMeasurementId
+      ? analytics.googleAnalyticsMeasurementId.trim()
+      : ''
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -89,8 +106,31 @@ export default async function RootLayout({ children, params }: Props) {
           id="iris-theme-init"
           strategy="beforeInteractive"
         />
+
+        {googleAnalyticsMeasurementId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(
+                googleAnalyticsMeasurementId,
+              )}`}
+              strategy="afterInteractive"
+            />
+            <Script
+              dangerouslySetInnerHTML={{
+                __html: createGoogleAnalyticsScript(
+                  googleAnalyticsMeasurementId,
+                  analytics?.googleAnalyticsAnonymizeIp !== false,
+                ),
+              }}
+              id="iris-google-analytics"
+              strategy="afterInteractive"
+            />
+          </>
+        )}
       </head>
       <body>
+        <SiteAnalyticsTracker locale={locale} />
+
         <SiteHeader header={header} locale={locale} settings={settings} />
 
         <div className="site-content">{children}</div>
