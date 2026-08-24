@@ -58,6 +58,6 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!admin|api|graphql|graphql-playground|my-route|_next|favicon.ico|robots.txt|sitemap.xml|.*\\..*).*)',
+    '/((?!admin|api|graphql|graphql-playground|_next|favicon.ico|robots.txt|sitemap.xml|.*\\..*).*)',
   ],
 }

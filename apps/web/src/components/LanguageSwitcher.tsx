@@ -2,12 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 
-import {
-  localeCookieMaxAge,
-  localeCookieName,
-  locales,
-  type Locale,
-} from '@/i18n/config'
+import { localeCookieMaxAge, localeCookieName, locales, type Locale } from '@/i18n/config'
 import { getMessages } from '@/i18n/messages'
 
 type Props = {

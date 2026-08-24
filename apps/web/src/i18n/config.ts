@@ -2,8 +2,6 @@ export const locales = ['en', 'ru'] as const
 
 export type Locale = (typeof locales)[number]
 
-export const defaultLocale: Locale = 'en'
-
 export const fallbackLocale: Locale = 'en'
 
 export const localeCookieName = 'iris_locale'
@@ -20,7 +18,7 @@ export function getPathLocale(pathname: string): Locale | undefined {
   return isLocale(segment) ? segment : undefined
 }
 
-export function removeLocaleFromPath(pathname: string): string {
+function removeLocaleFromPath(pathname: string): string {
   const segments = pathname.split('/')
 
   if (isLocale(segments[1])) {
@@ -34,7 +32,8 @@ export function removeLocaleFromPath(pathname: string): string {
 
 export function getLocalizedPath(locale: Locale, path: string): string {
   const cleanPath = removeLocaleFromPath(path || '/')
-  const normalizedPath = cleanPath === '/' ? '' : cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`
+  const normalizedPath =
+    cleanPath === '/' ? '' : cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`
 
   return `/${locale}${normalizedPath}`
 }

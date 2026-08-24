@@ -1,10 +1,19 @@
 {
   "name": "phototrigger-web",
   "private": true,
+  "packageManager": "pnpm@11.22.0",
   "scripts": {
-    "dev:web": "pnpm --dir apps/web dev",
-    "dev:docs": "pnpm --dir apps/docs dev",
-    "build:web": "pnpm --dir apps/web build",
-    "build:docs": "pnpm --dir apps/docs build"
+    "dev:web": "pnpm --filter web dev",
+    "dev:docs": "pnpm --filter docs dev",
+    "build": "pnpm run build:web && pnpm run build:docs",
+    "build:web": "pnpm --filter web build",
+    "build:docs": "pnpm --filter docs build",
+    "lint": "pnpm --filter web lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }

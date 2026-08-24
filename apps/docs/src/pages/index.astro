@@ -4,39 +4,40 @@ const fallbackURL = '/en/'
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta content="width=device-width, initial-scale=1" name="viewport" />
-		<meta content={`0; url=${fallbackURL}`} http-equiv="refresh" />
-		<title>Project Iris Documentation</title>
-		<script is:inline>
-			const cookieLocale = document.cookie
-				.split('; ')
-				.find((item) => item.startsWith('iris_locale='))
-				?.split('=')[1]
-			const browserLocale = navigator.languages?.[0] || navigator.language || ''
-			const locale = cookieLocale === 'ru' || cookieLocale === 'en'
-				? cookieLocale
-				: browserLocale.toLowerCase().startsWith('ru')
-					? 'ru'
-					: 'en'
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content={`0; url=${fallbackURL}`} http-equiv="refresh" />
+    <title>Project Iris Documentation</title>
+    <script is:inline>
+      const cookieLocale = document.cookie
+        .split('; ')
+        .find((item) => item.startsWith('iris_locale='))
+        ?.split('=')[1]
+      const browserLocale = navigator.languages?.[0] || navigator.language || ''
+      const locale =
+        cookieLocale === 'ru' || cookieLocale === 'en'
+          ? cookieLocale
+          : browserLocale.toLowerCase().startsWith('ru')
+            ? 'ru'
+            : 'en'
 
-			document.cookie = [
-				`iris_locale=${locale}`,
-				'Path=/',
-				`Max-Age=${60 * 60 * 24 * 365}`,
-				'SameSite=Lax',
-			].join('; ')
+      document.cookie = [
+        `iris_locale=${locale}`,
+        'Path=/',
+        `Max-Age=${60 * 60 * 24 * 365}`,
+        'SameSite=Lax',
+      ].join('; ')
 
-			window.location.replace(`/${locale}/`)
-		</script>
-	</head>
-	<body>
-		<p>
-			<a href="/en/">English documentation</a>
-		</p>
-		<p>
-			<a href="/ru/">Русская документация</a>
-		</p>
-	</body>
+      window.location.replace(`/${locale}/`)
+    </script>
+  </head>
+  <body>
+    <p>
+      <a href="/en/">English documentation</a>
+    </p>
+    <p>
+      <a href="/ru/">Русская документация</a>
+    </p>
+  </body>
 </html>

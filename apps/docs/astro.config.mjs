@@ -1,6 +1,6 @@
 // @ts-check
-import { defineConfig } from "astro/config";
-import starlight from "@astrojs/starlight";
+import { defineConfig } from 'astro/config'
+import starlight from '@astrojs/starlight'
 
 const localePersistenceScript = `
 (() => {
@@ -17,62 +17,62 @@ const localePersistenceScript = `
 		'SameSite=Lax',
 	].join('; ');
 })();
-`;
+`
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     starlight({
-      title: "Project Iris Documentation",
-      customCss: ["./src/styles/brand.css"],
+      title: 'Project Iris Documentation',
+      customCss: ['./src/styles/brand.css'],
       head: [
         {
-          tag: "script",
+          tag: 'script',
           content: localePersistenceScript,
         },
       ],
-      defaultLocale: "en",
+      defaultLocale: 'en',
       locales: {
         en: {
-          label: "English",
-          lang: "en",
+          label: 'English',
+          lang: 'en',
         },
         ru: {
-          label: "Русский",
-          lang: "ru",
+          label: 'Русский',
+          lang: 'ru',
         },
       },
       sidebar: [
         {
-          label: "Guides",
+          label: 'Guides',
           translations: {
-            ru: "Руководства",
+            ru: 'Руководства',
           },
-          items: [{ slug: "guides/example" }],
+          items: [{ slug: 'guides/getting-started' }],
         },
         {
-          label: "Hardware",
+          label: 'Hardware',
           translations: {
-            ru: "Аппаратная часть",
+            ru: 'Аппаратная часть',
           },
           items: [
             {
-              label: "Triggers",
+              label: 'Triggers',
               translations: {
-                ru: "Триггеры",
+                ru: 'Триггеры',
               },
-              items: [{ slug: "hardware/triggers/lightning" }],
+              items: [{ slug: 'hardware/triggers/lightning' }],
             },
           ],
         },
         {
-          label: "Reference",
+          label: 'Reference',
           translations: {
-            ru: "Справочник",
+            ru: 'Справочник',
           },
-          items: [{ autogenerate: { directory: "reference" } }],
+          items: [{ slug: 'reference/development-statuses' }],
         },
       ],
     }),
   ],
-});
+})

@@ -1,68 +1,71 @@
-# Nestjs specific
-/dist
-/node_modules
-/build
-/tmp
+# Dependencies
+node_modules/
+**/node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
 
-# Logs
-logs
+# Environment
+.env
+.env.*
+!.env.example
+!**/.env.example
+.env*.local
+
+# Build output
+build/
+**/build/
+dist/
+**/dist/
+.next/
+**/.next/
+out/
+**/out/
+.astro/
+**/.astro/
+
+# Test output
+coverage/
+**/coverage/
+test-results/
+**/test-results/
+playwright-report/
+**/playwright-report/
+blob-report/
+**/blob-report/
+playwright/.cache/
+**/playwright/.cache/
+
+# Generated application data
+media/
+**/media/
+
+# Logs and temp files
+logs/
 *.log
 npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+.temp/
+.tmp/
+tmp/
+**/tmp/
 
-# dotenv environment variable files
-.env
-.env.development
-.env.test
-.env.production
+# IDEs
+.idea/
+.vscode/
 
-# temp directory
-.temp
-.tmp
+# Deployment/tooling state
+.vercel/
+.prettier-cache
 
-
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/.pnp
-.pnp.js
-.yarn/install-state.gz
-
-/.idea
-/.idea/*
-!/.idea/runConfigurations
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-
-# misc
-.DS_Store
-*.pem
-
-# local env files
-.env*.local
-
-# vercel
-.vercel
-
-# typescript
+# TypeScript
 *.tsbuildinfo
 next-env.d.ts
+**/next-env.d.ts
 
-
-/media
-
-# Playwright
-node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
+# Misc
+.DS_Store
+*.pem

@@ -1,8 +1,8 @@
-import * as migration_20260823_071952_add_features from './20260823_071952_add_features';
-import * as migration_20260823_100022_add_features from './20260823_100022_add_features';
-import * as migration_20260823_125436_i18n_localized_fields from './20260823_125436_i18n_localized_fields';
-import * as migration_20260824_035559_add_roadmap from './20260824_035559_add_roadmap';
-import * as migration_20260824_042140_add_dev_blog from './20260824_042140_add_dev_blog';
+import * as migration_20260823_071952_add_features from './20260823_071952_add_features'
+import * as migration_20260823_100022_add_features from './20260823_100022_add_features'
+import * as migration_20260823_125436_i18n_localized_fields from './20260823_125436_i18n_localized_fields'
+import * as migration_20260824_035559_add_roadmap from './20260824_035559_add_roadmap'
+import * as migration_20260824_042140_add_dev_blog from './20260824_042140_add_dev_blog'
 
 export const migrations = [
   {
@@ -30,4 +30,4 @@ export const migrations = [
     down: migration_20260824_042140_add_dev_blog.down,
     name: '20260824_042140_add_dev_blog',
   },
-];
+]
