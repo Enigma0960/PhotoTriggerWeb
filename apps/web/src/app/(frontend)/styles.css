@@ -75,7 +75,8 @@ main > section {
 article,
 .feature-body,
 .docs-cta,
-.roadmap-empty {
+.roadmap-empty,
+.draft-preview-banner {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
@@ -93,6 +94,16 @@ article h2 a {
 
 article h2 a:hover {
   text-decoration-color: currentColor;
+}
+
+.text-link {
+  color: var(--accent);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.text-link:hover {
+  color: var(--accent-strong);
 }
 
 article span {
@@ -268,6 +279,76 @@ article span {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+.dev-blog-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.dev-blog-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dev-blog-card h2,
+.dev-blog-card p {
+  margin-bottom: 0;
+}
+
+.dev-blog-card > p:not(.dev-blog-date) {
+  color: var(--muted);
+}
+
+.dev-blog-date {
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.dev-blog-post {
+  max-width: 860px;
+  margin: 0 auto;
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.dev-blog-post header {
+  margin-bottom: 36px;
+}
+
+.dev-blog-content {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 34px;
+}
+
+.dev-blog-content :first-child {
+  margin-top: 0;
+}
+
+.dev-blog-content :last-child {
+  margin-bottom: 0;
+}
+
+.draft-preview-banner {
+  max-width: 860px;
+  margin: 0 auto 28px;
+  border-color: color-mix(in srgb, var(--warm) 40%, var(--line));
+  background: color-mix(in srgb, var(--warm) 7%, var(--surface));
+}
+
+.draft-preview-banner strong {
+  color: var(--warm);
+}
+
+.draft-preview-banner p {
+  margin: 8px 0 0;
+  color: var(--muted);
 }
 
 .roadmap-timeline {
@@ -456,6 +537,14 @@ article span {
 
   .site-footer__inner {
     flex-direction: column;
+  }
+
+  .dev-blog-list {
+    grid-template-columns: 1fr;
+  }
+
+  .dev-blog-content {
+    padding: 24px;
   }
 
   .roadmap-timeline::before {

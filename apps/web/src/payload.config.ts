@@ -16,6 +16,7 @@ import {SiteSettings} from './globals/SiteSettings'
 import {Users} from './collections/Users'
 import {Media} from './collections/Media'
 import {Features} from './collections/Features'
+import {DevBlogPosts} from './collections/DevBlogPosts'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -58,6 +59,7 @@ export default buildConfig({
         Users,
         Media,
         Features,
+        DevBlogPosts,
     ],
     globals: [
         SiteSettings,

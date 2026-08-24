@@ -6,6 +6,18 @@ const messages = {
       language: 'Language',
       home: 'Home',
     },
+    devBlog: {
+      title: 'Dev blog',
+      intro:
+        'Engineering notes, design decisions and development updates from Project Iris.',
+      allPosts: 'All dev-blog posts',
+      createdAt: 'Created',
+      draftPreview: 'Draft preview',
+      draftPreviewDescription:
+        'This page is visible through a private review link before publication.',
+      empty: 'No published dev-blog posts yet.',
+      readPost: 'Read post',
+    },
     home: {
       eyebrow: 'Project Iris',
       title: 'Programmable camera trigger and photography automation platform.',
@@ -13,6 +25,7 @@ const messages = {
         'Open hardware for interval, HDR, lightning, sound and external-trigger photography.',
       featuresLink: 'Explore features',
       roadmapLink: 'View roadmap',
+      devBlogLink: 'Read dev blog',
       docsLink: 'Open documentation',
       adminLink: 'Admin panel',
     },
@@ -58,6 +71,18 @@ const messages = {
       language: 'Язык',
       home: 'Главная',
     },
+    devBlog: {
+      title: 'Dev-blog',
+      intro:
+        'Инженерные заметки, проектные решения и новости разработки Project Iris.',
+      allPosts: 'Все записи dev-blog',
+      createdAt: 'Создано',
+      draftPreview: 'Предпросмотр черновика',
+      draftPreviewDescription:
+        'Эта страница доступна по приватной ссылке для вычитки до публикации.',
+      empty: 'Опубликованных записей dev-blog пока нет.',
+      readPost: 'Читать запись',
+    },
     home: {
       eyebrow: 'Project Iris',
       title: 'Программируемый триггер камеры и платформа автоматизации съемки.',
@@ -65,6 +90,7 @@ const messages = {
         'Открытая аппаратная платформа для интервальной, HDR, молниевой, звуковой съемки и внешних событий спуска.',
       featuresLink: 'Смотреть возможности',
       roadmapLink: 'Смотреть роадмап',
+      devBlogLink: 'Читать dev-blog',
       docsLink: 'Открыть документацию',
       adminLink: 'Админ-панель',
     },

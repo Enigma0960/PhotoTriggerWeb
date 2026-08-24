@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     features: Feature;
+    'dev-blog-posts': DevBlogPost;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,6 +81,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     features: FeaturesSelect<false> | FeaturesSelect<true>;
+    'dev-blog-posts': DevBlogPostsSelect<false> | DevBlogPostsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -212,6 +214,53 @@ export interface Feature {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dev-blog-posts".
+ */
+export interface DevBlogPost {
+  id: number;
+  title: string;
+  /**
+   * Stable URL part, e.g. first-prototype-notes.
+   */
+  slug: string;
+  excerpt: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Заполняется автоматически при первой публикации, но можно изменить вручную.
+   */
+  publishedAt?: string | null;
+  /**
+   * Секретная часть ссылки на черновик. Генерируется автоматически при сохранении записи.
+   */
+  reviewToken?: string | null;
+  /**
+   * Скопируйте эту ссылку и отправьте на вычитку русской версии до публикации.
+   */
+  reviewLinkRu?: string | null;
+  /**
+   * Скопируйте эту ссылку и отправьте на вычитку английской версии до публикации.
+   */
+  reviewLinkEn?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -245,6 +294,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'features';
         value: number | Feature;
+      } | null)
+    | ({
+        relationTo: 'dev-blog-posts';
+        value: number | DevBlogPost;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -349,6 +402,23 @@ export interface FeaturesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dev-blog-posts_select".
+ */
+export interface DevBlogPostsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  content?: T;
+  publishedAt?: T;
+  reviewToken?: T;
+  reviewLinkRu?: T;
+  reviewLinkEn?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -412,7 +482,7 @@ export interface Header {
         label: string;
         destination: 'internal' | 'docs' | 'external';
         /**
-         * Внутренняя ссылка: /features или /roadmap, документация: /hardware/, внешняя: https://example.com
+         * Внутренняя ссылка: /features, /roadmap или /dev-blog, документация: /hardware/, внешняя: https://example.com
          */
         href: string;
         newTab?: boolean | null;
