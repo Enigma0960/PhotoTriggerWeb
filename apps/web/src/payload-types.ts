@@ -93,11 +93,13 @@ export interface Config {
     'site-settings': SiteSettings;
     header: Header;
     footer: Footer;
+    roadmap: Roadmap;
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    roadmap: RoadmapSelect<false> | RoadmapSelect<true>;
   };
   locale: 'en' | 'ru';
   widgets: {
@@ -410,7 +412,7 @@ export interface Header {
         label: string;
         destination: 'internal' | 'docs' | 'external';
         /**
-         * Внутренняя ссылка: /features, документация: /hardware/, внешняя: https://example.com
+         * Внутренняя ссылка: /features или /roadmap, документация: /hardware/, внешняя: https://example.com
          */
         href: string;
         newTab?: boolean | null;
@@ -433,6 +435,32 @@ export interface Footer {
         destination: 'internal' | 'docs' | 'external';
         href: string;
         newTab?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "roadmap".
+ */
+export interface Roadmap {
+  id: number;
+  title: string;
+  intro?: string | null;
+  /**
+   * Этапы идут последовательно сверху вниз. Отметьте ровно один этап как текущий; все этапы до него на сайте будут считаться выполненными.
+   */
+  stages?:
+    | {
+        title: string;
+        description: string;
+        endType: 'date' | 'quarter' | 'year';
+        endDate?: string | null;
+        quarter?: ('q1' | 'q2' | 'q3' | 'q4') | null;
+        year?: number | null;
+        isCurrent?: boolean | null;
         id?: string | null;
       }[]
     | null;
@@ -484,6 +512,29 @@ export interface FooterSelect<T extends boolean = true> {
         destination?: T;
         href?: T;
         newTab?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "roadmap_select".
+ */
+export interface RoadmapSelect<T extends boolean = true> {
+  title?: T;
+  intro?: T;
+  stages?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        endType?: T;
+        endDate?: T;
+        quarter?: T;
+        year?: T;
+        isCurrent?: T;
         id?: T;
       };
   updatedAt?: T;

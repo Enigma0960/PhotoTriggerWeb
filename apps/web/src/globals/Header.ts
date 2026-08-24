@@ -60,7 +60,7 @@ export const Header: GlobalConfig = {
                     required: true,
                     admin: {
                         description:
-                            'Внутренняя ссылка: /features, документация: /hardware/, внешняя: https://example.com',
+                            'Внутренняя ссылка: /features или /roadmap, документация: /hardware/, внешняя: https://example.com',
                     },
                 },
                 {

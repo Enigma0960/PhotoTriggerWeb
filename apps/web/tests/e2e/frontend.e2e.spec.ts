@@ -10,4 +10,12 @@ test.describe('Frontend', () => {
 
     await expect(heading).toBeVisible()
   })
+
+  test('can render localized roadmap', async ({ page }) => {
+    await page.goto('http://localhost:3000/ru/roadmap')
+
+    await expect(page.locator('h1')).toHaveText('Роадмап проекта')
+    await expect(page.getByText('Текущий этап')).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Прототип триггера молнии' })).toBeVisible()
+  })
 })

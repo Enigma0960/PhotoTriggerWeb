@@ -43,6 +43,10 @@ export default async function HomePage({ params }: Props) {
             {messages.home.featuresLink}
           </Link>
 
+          <Link className="button" href={getLocalizedPath(locale, '/roadmap')}>
+            {messages.home.roadmapLink}
+          </Link>
+
           <a className="button" href={docsHref}>
             {messages.home.docsLink}
           </a>
