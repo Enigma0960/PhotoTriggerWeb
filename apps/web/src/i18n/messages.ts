@@ -3,13 +3,15 @@ import type { Locale } from './config'
 const messages = {
   en: {
     common: {
+      colorTheme: 'Color theme',
+      darkTheme: 'Dark',
       language: 'Language',
+      lightTheme: 'Light',
       home: 'Home',
     },
     devBlog: {
       title: 'Dev blog',
-      intro:
-        'Engineering notes, design decisions and development updates from Project Iris.',
+      intro: 'Engineering notes, design decisions and development updates from Project Iris.',
       allPosts: 'All dev-blog posts',
       createdAt: 'Created',
       draftPreview: 'Draft preview',
@@ -21,8 +23,7 @@ const messages = {
     home: {
       eyebrow: 'Project Iris',
       title: 'Programmable camera trigger and photography automation platform.',
-      intro:
-        'Open hardware for interval, HDR, lightning, sound and external-trigger photography.',
+      intro: 'Open hardware for interval, HDR, lightning, sound and external-trigger photography.',
       featuresLink: 'Explore features',
       roadmapLink: 'View roadmap',
       devBlogLink: 'Read dev blog',
@@ -40,8 +41,7 @@ const messages = {
     },
     features: {
       title: 'Features',
-      intro:
-        'Camera automation, sensors and triggering capabilities available in Project Iris.',
+      intro: 'Camera automation, sensors and triggering capabilities available in Project Iris.',
       developmentStatus: 'Development status',
       featured: 'Featured',
       allFeatures: 'All features',
@@ -68,13 +68,15 @@ const messages = {
   },
   ru: {
     common: {
+      colorTheme: 'Цветовая тема',
+      darkTheme: 'Темная',
       language: 'Язык',
+      lightTheme: 'Светлая',
       home: 'Главная',
     },
     devBlog: {
       title: 'Dev-blog',
-      intro:
-        'Инженерные заметки, проектные решения и новости разработки Project Iris.',
+      intro: 'Инженерные заметки, проектные решения и новости разработки Project Iris.',
       allPosts: 'Все записи dev-blog',
       createdAt: 'Создано',
       draftPreview: 'Предпросмотр черновика',
@@ -96,8 +98,7 @@ const messages = {
     },
     roadmap: {
       title: 'Роадмап проекта',
-      intro:
-        'Последовательность этапов Project Iris от базовой разработки до готовности к релизу.',
+      intro: 'Последовательность этапов Project Iris от базовой разработки до готовности к релизу.',
       completed: 'Выполнено',
       current: 'Текущий этап',
       planned: 'Запланировано',
@@ -111,8 +112,7 @@ const messages = {
       allFeatures: 'Все возможности',
       empty: 'Опубликованных возможностей пока нет.',
       technicalDocumentation: 'Техническая документация',
-      documentationIntro:
-        'Подробная информация о реализации доступна в документации Project Iris.',
+      documentationIntro: 'Подробная информация о реализации доступна в документации Project Iris.',
       openDocumentation: 'Открыть техническую документацию',
     },
     statuses: {

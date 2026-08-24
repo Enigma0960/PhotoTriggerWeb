@@ -6,94 +6,97 @@ import { SiteHeader } from '@/components/SiteHeader'
 import { isLocale, locales } from '@/i18n/config'
 import { getSiteGlobals } from '@/lib/getSiteGlobals'
 import { notFound } from 'next/navigation'
+import Script from 'next/script'
 
 import '../styles.css'
 
 export const dynamic = 'force-dynamic'
 
+const themeInitScript = `
+(() => {
+  try {
+    const storedTheme =
+      window.localStorage.getItem('iris_theme') ||
+      window.localStorage.getItem('starlight-theme');
+    const theme = storedTheme === 'light' || storedTheme === 'dark'
+      ? storedTheme
+      : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+  } catch {
+    document.documentElement.dataset.theme = 'light';
+  }
+})();
+`
+
 type Props = {
-    children: ReactNode
-    params: Promise<{
-        locale: string
-    }>
+  children: ReactNode
+  params: Promise<{
+    locale: string
+  }>
 }
 
 type MetadataProps = {
-    params: Promise<{
-        locale: string
-    }>
+  params: Promise<{
+    locale: string
+  }>
 }
 
 export function generateStaticParams() {
-    return locales.map((locale) => ({
-        locale,
-    }))
+  return locales.map((locale) => ({
+    locale,
+  }))
 }
 
 export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
-    const { locale } = await params
+  const { locale } = await params
 
-    if (!isLocale(locale)) {
-        return {}
-    }
+  if (!isLocale(locale)) {
+    return {}
+  }
 
-    const { settings } = await getSiteGlobals(locale)
+  const { settings } = await getSiteGlobals(locale)
 
-    const title =
-        settings.metaTitle ||
-        settings.siteName ||
-        'Project Iris'
+  const title = settings.metaTitle || settings.siteName || 'Project Iris'
 
-    const description =
-        settings.metaDescription ||
-        settings.description ||
-        undefined
+  const description = settings.metaDescription || settings.description || undefined
 
-    return {
-        title: {
-            default: title,
-            template: `%s | ${settings.siteName}`,
-        },
+  return {
+    title: {
+      default: title,
+      template: `%s | ${settings.siteName}`,
+    },
 
-        description,
-    }
+    description,
+  }
 }
 
-export default async function RootLayout({
-    children,
-    params,
-}: Props) {
-    const { locale } = await params
+export default async function RootLayout({ children, params }: Props) {
+  const { locale } = await params
 
-    if (!isLocale(locale)) {
-        notFound()
-    }
+  if (!isLocale(locale)) {
+    notFound()
+  }
 
-    const {
-        settings,
-        header,
-        footer,
-    } = await getSiteGlobals(locale)
+  const { settings, header, footer } = await getSiteGlobals(locale)
 
-    return (
-        <html lang={locale}>
-        <body>
-        <SiteHeader
-            header={header}
-            locale={locale}
-            settings={settings}
+  return (
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <Script
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+          id="iris-theme-init"
+          strategy="beforeInteractive"
         />
+      </head>
+      <body>
+        <SiteHeader header={header} locale={locale} settings={settings} />
 
-        <div className="site-content">
-            {children}
-        </div>
+        <div className="site-content">{children}</div>
 
-        <SiteFooter
-            footer={footer}
-            locale={locale}
-            settings={settings}
-        />
-        </body>
-        </html>
-    )
+        <SiteFooter footer={footer} locale={locale} settings={settings} />
+      </body>
+    </html>
+  )
 }

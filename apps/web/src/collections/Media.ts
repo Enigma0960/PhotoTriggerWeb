@@ -1,5 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
+import { contentLocaleField } from '@/admin/fields/contentLocaleField'
+
 export const Media: CollectionConfig = {
   slug: 'media',
   labels: {
@@ -17,14 +19,25 @@ export const Media: CollectionConfig = {
   },
   fields: [
     {
-      name: 'alt',
-      label: {
-        en: 'Alt text',
-        ru: 'Альтернативный текст',
-      },
-      type: 'text',
-      required: true,
-      localized: true,
+      type: 'tabs',
+      tabs: [
+        {
+          label: 'Перевод',
+          fields: [
+            contentLocaleField('mediaContentLocale'),
+            {
+              name: 'alt',
+              label: {
+                en: 'Alt text',
+                ru: 'Альтернативный текст',
+              },
+              type: 'text',
+              required: true,
+              localized: true,
+            },
+          ],
+        },
+      ],
     },
   ],
   upload: true,

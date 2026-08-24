@@ -1,0 +1,122 @@
+:root {
+  --iris-page: #f4f7f7;
+  --iris-surface: #ffffff;
+  --iris-surface-soft: #edf3f2;
+  --iris-text: #172022;
+  --iris-muted: #5d6a6d;
+  --iris-line: #d6e0df;
+  --iris-accent: #146c72;
+  --iris-accent-strong: #0f5258;
+  --iris-accent-contrast: #ffffff;
+  --iris-warm: #b4553f;
+
+  --sl-color-accent-low: #dcefee;
+  --sl-color-accent: var(--iris-accent);
+  --sl-color-accent-high: var(--iris-accent-strong);
+  --sl-color-text-accent: var(--iris-accent);
+  --sl-color-bg: var(--iris-page);
+  --sl-color-bg-nav: color-mix(in srgb, var(--iris-surface) 86%, transparent);
+  --sl-color-bg-sidebar: var(--iris-surface);
+  --sl-color-bg-inline-code: var(--iris-surface-soft);
+  --sl-color-bg-accent: var(--iris-accent);
+  --sl-color-hairline: var(--iris-line);
+  --sl-color-hairline-light: var(--iris-line);
+  --sl-color-hairline-shade: var(--iris-line);
+  --sl-font-system:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --sl-content-width: 48rem;
+}
+
+:root[data-theme="light"] {
+  --sl-color-white: var(--iris-text);
+  --sl-color-gray-1: #263234;
+  --sl-color-gray-2: #405052;
+  --sl-color-gray-3: var(--iris-muted);
+  --sl-color-gray-4: #8d9b9d;
+  --sl-color-gray-5: var(--iris-line);
+  --sl-color-gray-6: #edf3f2;
+  --sl-color-gray-7: #f8fbfa;
+  --sl-color-black: var(--iris-surface);
+  --sl-color-text: var(--iris-text);
+}
+
+:root[data-theme="dark"] {
+  --iris-page: #111819;
+  --iris-surface: #182326;
+  --iris-surface-soft: #1f2c2f;
+  --iris-text: #edf5f3;
+  --iris-muted: #a9b8b6;
+  --iris-line: #2c3f42;
+  --iris-accent: #5cc2c3;
+  --iris-accent-strong: #8bd7d7;
+  --iris-accent-contrast: #0d1719;
+  --iris-warm: #d7836b;
+
+  --sl-color-accent-low: #173a3e;
+  --sl-color-accent: var(--iris-accent);
+  --sl-color-accent-high: var(--iris-accent-strong);
+  --sl-color-text-accent: var(--iris-accent-strong);
+  --sl-color-bg: var(--iris-page);
+  --sl-color-bg-nav: color-mix(in srgb, var(--iris-surface) 90%, transparent);
+  --sl-color-bg-sidebar: var(--iris-surface);
+  --sl-color-bg-inline-code: var(--iris-surface-soft);
+  --sl-color-bg-accent: var(--iris-accent);
+  --sl-color-hairline: var(--iris-line);
+  --sl-color-hairline-light: var(--iris-line);
+  --sl-color-hairline-shade: #0b1112;
+}
+
+.header {
+  backdrop-filter: blur(12px);
+}
+
+.site-title {
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.sidebar-pane,
+.right-sidebar,
+.main-pane > main {
+  background: var(--sl-color-bg);
+}
+
+a {
+  text-underline-offset: 0.18em;
+}
+
+starlight-theme-select label,
+starlight-lang-select label {
+  min-height: 36px;
+  border: 1px solid var(--iris-line);
+  border-radius: 8px;
+  background: var(--iris-surface);
+  color: var(--iris-muted);
+  padding-inline: 0.5rem;
+  font-weight: 800;
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--iris-text) 5%, transparent);
+}
+
+starlight-theme-select label:hover,
+starlight-lang-select label:hover {
+  color: var(--iris-text);
+  border-color: color-mix(in srgb, var(--iris-accent) 46%, var(--iris-line));
+}
+
+starlight-theme-select select,
+starlight-lang-select select {
+  font-weight: 800;
+}
+
+.sl-markdown-content :is(h1, h2, h3, h4) {
+  letter-spacing: 0;
+}
+
+.sl-markdown-content a:not(:where(.not-content *)) {
+  color: var(--sl-color-text-accent);
+}
+
+.card {
+  border-radius: 8px;
+}

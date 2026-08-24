@@ -1,6 +1,6 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import starlight from '@astrojs/starlight';
+import { defineConfig } from "astro/config";
+import starlight from "@astrojs/starlight";
 
 const localePersistenceScript = `
 (() => {
@@ -21,59 +21,58 @@ const localePersistenceScript = `
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [
-		starlight({
-			title: 'Project Iris Documentation',
-			head: [
-				{
-					tag: 'script',
-					content: localePersistenceScript,
-				},
-			],
-			defaultLocale: 'en',
-			locales: {
-				en: {
-					label: 'English',
-					lang: 'en',
-				},
-				ru: {
-					label: 'Русский',
-					lang: 'ru',
-				},
-			},
-			sidebar: [
-				{
-					label: 'Guides',
-					translations: {
-						ru: 'Руководства',
-					},
-					items: [
-						{ slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Hardware',
-					translations: {
-						ru: 'Аппаратная часть',
-					},
-					items: [
-						{
-							label: 'Triggers',
-							translations: {
-								ru: 'Триггеры',
-							},
-							items: [{ slug: 'hardware/triggers/lightning' }],
-						},
-					],
-				},
-				{
-					label: 'Reference',
-					translations: {
-						ru: 'Справочник',
-					},
-					items: [{ autogenerate: { directory: 'reference' } }],
-				},
-			],
-		}),
-	],
+  integrations: [
+    starlight({
+      title: "Project Iris Documentation",
+      customCss: ["./src/styles/brand.css"],
+      head: [
+        {
+          tag: "script",
+          content: localePersistenceScript,
+        },
+      ],
+      defaultLocale: "en",
+      locales: {
+        en: {
+          label: "English",
+          lang: "en",
+        },
+        ru: {
+          label: "Русский",
+          lang: "ru",
+        },
+      },
+      sidebar: [
+        {
+          label: "Guides",
+          translations: {
+            ru: "Руководства",
+          },
+          items: [{ slug: "guides/example" }],
+        },
+        {
+          label: "Hardware",
+          translations: {
+            ru: "Аппаратная часть",
+          },
+          items: [
+            {
+              label: "Triggers",
+              translations: {
+                ru: "Триггеры",
+              },
+              items: [{ slug: "hardware/triggers/lightning" }],
+            },
+          ],
+        },
+        {
+          label: "Reference",
+          translations: {
+            ru: "Справочник",
+          },
+          items: [{ autogenerate: { directory: "reference" } }],
+        },
+      ],
+    }),
+  ],
 });

@@ -182,7 +182,6 @@ export interface Media {
 export interface Feature {
   id: number;
   title: string;
-  slug: string;
   summary: string;
   description: {
     root: {
@@ -199,6 +198,7 @@ export interface Feature {
     };
     [k: string]: unknown;
   };
+  slug: string;
   category: 'trigger' | 'camera' | 'automation' | 'connectivity' | 'system';
   developmentStatus: 'planned' | 'design' | 'prototype' | 'testing' | 'ready';
   image?: (number | null) | Media;
@@ -218,27 +218,10 @@ export interface Feature {
  */
 export interface DevBlogPost {
   id: number;
-  title: string;
   /**
    * Stable URL part, e.g. first-prototype-notes.
    */
   slug: string;
-  excerpt: string;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
   /**
    * Заполняется автоматически при первой публикации, но можно изменить вручную.
    */
@@ -255,6 +238,23 @@ export interface DevBlogPost {
    * Скопируйте эту ссылку и отправьте на вычитку английской версии до публикации.
    */
   reviewLinkEn?: string | null;
+  title: string;
+  excerpt: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -387,9 +387,9 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface FeaturesSelect<T extends boolean = true> {
   title?: T;
-  slug?: T;
   summary?: T;
   description?: T;
+  slug?: T;
   category?: T;
   developmentStatus?: T;
   image?: T;
@@ -405,14 +405,14 @@ export interface FeaturesSelect<T extends boolean = true> {
  * via the `definition` "dev-blog-posts_select".
  */
 export interface DevBlogPostsSelect<T extends boolean = true> {
-  title?: T;
   slug?: T;
-  excerpt?: T;
-  content?: T;
   publishedAt?: T;
   reviewToken?: T;
   reviewLinkRu?: T;
   reviewLinkEn?: T;
+  title?: T;
+  excerpt?: T;
+  content?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -463,11 +463,11 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface SiteSettings {
   id: number;
-  siteName: string;
   tagline: string;
   description: string;
   metaTitle?: string | null;
   metaDescription?: string | null;
+  siteName: string;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -542,11 +542,11 @@ export interface Roadmap {
  * via the `definition` "site-settings_select".
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
-  siteName?: T;
   tagline?: T;
   description?: T;
   metaTitle?: T;
   metaDescription?: T;
+  siteName?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

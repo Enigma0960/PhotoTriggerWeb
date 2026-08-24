@@ -1,3 +1,4 @@
+import { AdminLocaleTabs as AdminLocaleTabs_6a72a4d83825106e37c0957468cf62a6 } from '@/admin/components/AdminLocaleTabs'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { LexicalDiffComponent as LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -22,10 +23,13 @@ import { UnderlineFeatureClient as UnderlineFeatureClient_e70f5e05f09f93e00b997e
 import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { DraftReviewLinkActions as DraftReviewLinkActions_9f6d13fc96c82b5b6601037f33a198f1 } from '@/admin/components/DraftReviewLinkActions'
+import { AdminLanguageToggle as AdminLanguageToggle_bb3a5bdcd474fd981e5eed7952687309 } from '@/admin/components/AdminLanguageToggle'
+import { AdminThemeToggle as AdminThemeToggle_a7639af1e06156ff02fb64067e57e826 } from '@/admin/components/AdminThemeToggle'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
 /** @type import('payload').ImportMap */
 export const importMap = {
+  "@/admin/components/AdminLocaleTabs#AdminLocaleTabs": AdminLocaleTabs_6a72a4d83825106e37c0957468cf62a6,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#LexicalDiffComponent": LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e,
@@ -50,5 +54,7 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#BoldFeatureClient": BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@/admin/components/DraftReviewLinkActions#DraftReviewLinkActions": DraftReviewLinkActions_9f6d13fc96c82b5b6601037f33a198f1,
+  "@/admin/components/AdminLanguageToggle#AdminLanguageToggle": AdminLanguageToggle_bb3a5bdcd474fd981e5eed7952687309,
+  "@/admin/components/AdminThemeToggle#AdminThemeToggle": AdminThemeToggle_a7639af1e06156ff02fb64067e57e826,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }

@@ -1,12 +1,35 @@
 :root {
+  color-scheme: light;
   --page: #f4f7f7;
   --surface: #ffffff;
+  --surface-soft: #edf3f2;
   --text: #172022;
   --muted: #5d6a6d;
   --line: #d6e0df;
   --accent: #146c72;
   --accent-strong: #0f5258;
+  --accent-contrast: #ffffff;
   --warm: #b4553f;
+  --warm-text: #7c3025;
+  --success: #3f8f5a;
+  --shadow: 0 18px 45px rgb(23 32 34 / 8%);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --page: #111819;
+  --surface: #182326;
+  --surface-soft: #1f2c2f;
+  --text: #edf5f3;
+  --muted: #a9b8b6;
+  --line: #2c3f42;
+  --accent: #5cc2c3;
+  --accent-strong: #8bd7d7;
+  --accent-contrast: #0d1719;
+  --warm: #d7836b;
+  --warm-text: #f1b7a7;
+  --success: #73bf89;
+  --shadow: 0 18px 45px rgb(0 0 0 / 26%);
 }
 
 * {
@@ -26,7 +49,12 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
     sans-serif;
   font-size: 17px;
   line-height: 1.6;
@@ -112,7 +140,7 @@ article span {
   min-height: 28px;
   border-radius: 999px;
   background: color-mix(in srgb, var(--warm) 13%, transparent);
-  color: #7c3025;
+  color: var(--warm-text);
   padding: 2px 10px;
   font-size: 14px;
   font-weight: 700;
@@ -124,7 +152,7 @@ article span {
 
 .site-header {
   border-bottom: 1px solid var(--line);
-  background: rgb(255 255 255 / 82%);
+  background: color-mix(in srgb, var(--surface) 84%, transparent);
   backdrop-filter: blur(12px);
 }
 
@@ -169,18 +197,34 @@ article span {
   color: var(--text);
 }
 
+.site-controls {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-switcher,
 .language-switcher {
   display: inline-grid;
-  grid-template-columns: repeat(2, 44px);
   align-items: center;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--text) 5%, transparent);
 }
 
+.theme-switcher {
+  grid-template-columns: repeat(2, minmax(68px, 1fr));
+}
+
+.language-switcher {
+  grid-template-columns: repeat(2, 44px);
+}
+
+.theme-switcher button,
 .language-switcher button {
-  min-width: 44px;
   min-height: 36px;
   border: 0;
   background: transparent;
@@ -191,9 +235,24 @@ article span {
   font-weight: 800;
 }
 
+.theme-switcher button {
+  min-width: 68px;
+  padding: 0 10px;
+}
+
+.language-switcher button {
+  min-width: 44px;
+}
+
+.theme-switcher button:hover,
+.language-switcher button:hover {
+  color: var(--text);
+}
+
+.theme-switcher button[aria-pressed='true'],
 .language-switcher button[aria-pressed='true'] {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--accent-contrast);
 }
 
 .home-page {
@@ -247,7 +306,7 @@ article span {
 .button--primary {
   border-color: var(--accent);
   background: var(--accent);
-  color: #ffffff;
+  color: var(--accent-contrast);
 }
 
 .button--primary:hover {
@@ -369,8 +428,8 @@ article span {
   border-radius: 999px;
   background: linear-gradient(
     to bottom,
-    color-mix(in srgb, var(--accent) 70%, white),
-    color-mix(in srgb, var(--muted) 38%, white)
+    color-mix(in srgb, var(--accent) 70%, var(--surface)),
+    color-mix(in srgb, var(--muted) 38%, var(--surface))
   );
   content: '';
   transform: translateX(-50%);
@@ -386,7 +445,7 @@ article span {
 }
 
 .roadmap-stage--completed {
-  --stage-color: #3f8f5a;
+  --stage-color: var(--success);
 }
 
 .roadmap-stage--current {
@@ -403,7 +462,7 @@ article span {
   width: min(100%, 440px);
   justify-self: end;
   border-color: color-mix(in srgb, var(--stage-color) 42%, var(--line));
-  box-shadow: 0 18px 45px rgb(23 32 34 / 8%);
+  box-shadow: var(--shadow);
 }
 
 .roadmap-stage:nth-child(even) .roadmap-card {
@@ -474,7 +533,7 @@ article span {
   width: 48px;
   height: 48px;
   justify-self: center;
-  border: 3px solid color-mix(in srgb, var(--stage-color) 74%, white);
+  border: 3px solid color-mix(in srgb, var(--stage-color) 74%, var(--surface));
   border-radius: 50%;
   background: var(--surface);
   box-shadow: 0 0 0 8px color-mix(in srgb, var(--stage-color) 14%, transparent);
@@ -483,7 +542,7 @@ article span {
 .roadmap-node span {
   width: 18px;
   height: 18px;
-  border: 4px solid color-mix(in srgb, var(--text) 70%, white);
+  border: 4px solid color-mix(in srgb, var(--text) 70%, var(--surface));
   border-radius: 50%;
   background: var(--stage-color);
 }
@@ -533,6 +592,11 @@ article span {
     justify-content: flex-start;
     flex-wrap: wrap;
     margin-left: 0;
+  }
+
+  .site-controls {
+    flex-wrap: wrap;
+    align-items: flex-start;
   }
 
   .site-footer__inner {

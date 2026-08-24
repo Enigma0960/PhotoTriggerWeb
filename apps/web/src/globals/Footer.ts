@@ -1,79 +1,112 @@
 import type { GlobalConfig } from 'payload'
 
+import { contentLocaleField } from '@/admin/fields/contentLocaleField'
+
 export const Footer: GlobalConfig = {
-    slug: 'footer',
+  slug: 'footer',
 
-    label: 'Подвал сайта',
+  label: 'Подвал сайта',
 
-    typescript: {
-        interface: 'Footer',
-    },
+  typescript: {
+    interface: 'Footer',
+  },
 
-    admin: {
-        group: 'Сайт',
-    },
+  admin: {
+    group: 'Сайт',
+  },
 
-    access: {
-        read: () => true,
-        update: ({ req: { user } }) => Boolean(user),
-    },
+  access: {
+    read: () => true,
+    update: ({ req: { user } }) => Boolean(user),
+  },
 
-    fields: [
+  fields: [
+    {
+      type: 'tabs',
+      tabs: [
         {
-            name: 'description',
-            label: 'Описание',
-            type: 'textarea',
-            localized: true,
-            defaultValue:
-                'Open hardware camera trigger and photography automation project.',
+          label: 'Перевод',
+          fields: [
+            contentLocaleField('footerContentLocale'),
+            {
+              name: 'description',
+              label: 'Описание',
+              type: 'textarea',
+              localized: true,
+              defaultValue: 'Open hardware camera trigger and photography automation project.',
+            },
+          ],
         },
         {
-            name: 'links',
-            label: 'Ссылки',
-            type: 'array',
-            maxRows: 8,
-            fields: [
+          label: 'Ссылки',
+          fields: [
+            {
+              name: 'links',
+              label: 'Ссылки',
+              type: 'array',
+              maxRows: 8,
+              fields: [
                 {
-                    name: 'label',
-                    label: 'Подпись',
-                    type: 'text',
-                    required: true,
-                    localized: true,
-                },
-                {
-                    name: 'destination',
-                    label: 'Тип ссылки',
-                    type: 'select',
-                    required: true,
-                    defaultValue: 'internal',
-                    options: [
+                  type: 'tabs',
+                  tabs: [
+                    {
+                      label: 'Перевод',
+                      fields: [
+                        contentLocaleField('footerLinksContentLocale'),
                         {
-                            label: 'Внутренняя страница',
-                            value: 'internal',
+                          name: 'label',
+                          label: 'Подпись',
+                          type: 'text',
+                          required: true,
+                          localized: true,
+                        },
+                      ],
+                    },
+                    {
+                      label: 'Общее',
+                      fields: [
+                        {
+                          name: 'destination',
+                          label: 'Тип ссылки',
+                          type: 'select',
+                          required: true,
+                          defaultValue: 'internal',
+                          options: [
+                            {
+                              label: 'Внутренняя страница',
+                              value: 'internal',
+                            },
+                            {
+                              label: 'Документация',
+                              value: 'docs',
+                            },
+                            {
+                              label: 'Внешний URL',
+                              value: 'external',
+                            },
+                          ],
                         },
                         {
-                            label: 'Документация',
-                            value: 'docs',
+                          name: 'href',
+                          label: 'Адрес',
+                          type: 'text',
+                          required: true,
                         },
                         {
-                            label: 'Внешний URL',
-                            value: 'external',
+                          name: 'newTab',
+                          label: 'Открывать в новой вкладке',
+                          type: 'checkbox',
+                          defaultValue: false,
                         },
-                    ],
+                      ],
+                    },
+                  ],
                 },
-                {
-                    name: 'href',
-                    label: 'Адрес',
-                    type: 'text',
-                    required: true,
-                },
-                {
-                    name: 'newTab',
-                    label: 'Открывать в новой вкладке',
-                    type: 'checkbox',
-                    defaultValue: false,
-                },
-            ],
+              ],
+            },
+          ],
         },
-    ],
+      ],
+    },
+  ],
 }
