@@ -1,10 +1,8 @@
-import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 
-import { getLocalizedPath, isLocale } from '@/i18n/config'
+import { isLocale } from '@/i18n/config'
 import { getMessages } from '@/i18n/messages'
-import { getSiteGlobals } from '@/lib/getSiteGlobals'
-import { resolveNavigationHref } from '@/lib/navigation'
 
 type Props = {
   params: Promise<{
@@ -20,45 +18,84 @@ export default async function HomePage({ params }: Props) {
   }
 
   const messages = getMessages(locale)
-  const { settings } = await getSiteGlobals(locale)
-  const docsHref = resolveNavigationHref(
-    {
-      destination: 'docs',
-      href: '/',
-    },
-    locale,
-  )
+  const home = messages.home
 
   return (
     <main className="home-page">
-      <section className="home-hero">
-        <p className="eyebrow">{messages.home.eyebrow}</p>
+      <section aria-labelledby="home-title" className="home-hero">
+        <div className="home-hero__copy">
+          <p className="eyebrow">{home.eyebrow}</p>
 
-        <h1>{settings.tagline || messages.home.title}</h1>
+          <h1 id="home-title">{home.productName}</h1>
 
-        <p className="lede">{settings.description || messages.home.intro}</p>
+          <p className="home-subtitle">{home.subtitle}</p>
 
-        <div className="home-actions">
-          <Link className="button button--primary" href={getLocalizedPath(locale, '/features')}>
-            {messages.home.featuresLink}
-          </Link>
+          <p className="lede">{home.intro}</p>
 
-          <Link className="button" href={getLocalizedPath(locale, '/roadmap')}>
-            {messages.home.roadmapLink}
-          </Link>
-
-          <Link className="button" href={getLocalizedPath(locale, '/dev-blog')}>
-            {messages.home.devBlogLink}
-          </Link>
-
-          <a className="button" href={docsHref}>
-            {messages.home.docsLink}
-          </a>
-
-          <Link className="button button--quiet" href="/admin">
-            {messages.home.adminLink}
-          </Link>
+          <p className="home-signal-line">{home.signalTitle}</p>
         </div>
+
+        <figure className="home-hero__media">
+          <Image
+            alt={home.renderAlt}
+            className="home-hero__image"
+            height={1086}
+            priority
+            sizes="(max-width: 760px) 92vw, (max-width: 1100px) 620px, 720px"
+            src="/images/phototrigger-reva-render.png"
+            width={1448}
+          />
+          <figcaption>{home.renderCaption}</figcaption>
+        </figure>
+      </section>
+
+      <section aria-labelledby="home-flow-title" className="home-section home-flow">
+        <header>
+          <p className="eyebrow">{home.flowEyebrow}</p>
+          <h2 id="home-flow-title">{home.flowTitle}</h2>
+          <p>{home.flowIntro}</p>
+        </header>
+
+        <ol className="home-step-list">
+          {home.steps.map((step) => (
+            <li className="home-step" key={step.title}>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section aria-label={home.capabilitiesTitle} className="home-band">
+        <div className="home-section home-summary-grid">
+          <section>
+            <h2>{home.capabilitiesTitle}</h2>
+
+            <ul className="home-info-list">
+              {home.capabilities.map((capability) => (
+                <li key={capability}>{capability}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <h2>{home.advantagesTitle}</h2>
+
+            <ul className="home-info-list">
+              {home.advantages.map((advantage) => (
+                <li key={advantage}>{advantage}</li>
+              ))}
+            </ul>
+          </section>
+        </div>
+      </section>
+
+      <section aria-labelledby="home-status-title" className="home-section home-status">
+        <p className="eyebrow">{home.statusEyebrow}</p>
+
+        <h2 id="home-status-title">{home.statusTitle}</h2>
+
+        <p>{home.statusText}</p>
       </section>
     </main>
   )

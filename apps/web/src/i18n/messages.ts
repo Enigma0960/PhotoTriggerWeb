@@ -22,13 +22,59 @@ const messages = {
     },
     home: {
       eyebrow: 'Project Iris',
-      title: 'Programmable camera trigger and photography automation platform.',
-      intro: 'Open hardware for interval, HDR, lightning, sound and external-trigger photography.',
-      featuresLink: 'Explore features',
-      roadmapLink: 'View roadmap',
-      devBlogLink: 'Read dev blog',
-      docsLink: 'Open documentation',
-      adminLink: 'Admin panel',
+      productName: 'PhotoTrigger Rev.A',
+      subtitle: 'Programmable multi-source camera trigger',
+      intro:
+        'An autonomous camera controller that can capture by time, light, sound, an external sensor, a remote command, or a manual trigger.',
+      renderAlt: 'Render of the final PhotoTrigger Rev.A device',
+      renderCaption: 'Concept render, not an actual product photo.',
+      signalTitle: 'Time, light, sound, external sensor, remote command',
+      flowEyebrow: 'How it works',
+      flowTitle: 'From event to frame in one predictable chain',
+      flowIntro:
+        'The device is built around a single Trigger Manager: every source follows the same path from detection to camera action.',
+      steps: [
+        {
+          title: 'Choose the event source',
+          text: 'Use an interval, RTC schedule, lightning sensor, sound trigger, external 5-24 V input, Wi-Fi, Bluetooth LE, or the device controls.',
+        },
+        {
+          title: 'Set the camera action',
+          text: 'Configure focus, shutter, delays, cooldown, repetition, Bulb timing, or a saved shooting profile.',
+        },
+        {
+          title: 'Arm PhotoTrigger',
+          text: 'The controller can work on its own, with a 128x64 OLED interface and no required phone, computer, cloud service, or live browser session.',
+        },
+        {
+          title: 'React through hardware paths',
+          text: 'Lightning and sound events are detected by analog frontends and comparators, while the ESP32-S3 handles programs, profiles, web UI, BLE, logs, and OTA updates.',
+        },
+        {
+          title: 'Trigger the camera safely',
+          text: 'PhotoTrigger can control focus and shutter through isolated wired outputs, or send infrared remote commands where the camera supports them.',
+        },
+      ],
+      capabilitiesTitle: 'What the device combines',
+      capabilities: [
+        'Intervalometer and scheduled shooting with an always-on RTC',
+        'Lightning trigger with adjustable sensitivity and light-level monitoring',
+        'Sound trigger with adjustable threshold and visual level feedback',
+        'Isolated external input for sensors, lab automation, or custom electronics',
+        'Wired focus/shutter control plus three-direction IR output',
+        'On-device UI, Wi-Fi, Bluetooth LE, local profiles, and OTA-ready firmware space',
+      ],
+      advantagesTitle: 'Why it is useful',
+      advantages: [
+        'One compact device replaces several separate camera accessories.',
+        'The camera can stay unattended for timelapse, sunrise, night, weather, and lab scenarios.',
+        'Power can be fully switched off until an RTC alarm wakes the device for scheduled work.',
+        'Camera and external-trigger connections are electrically isolated for safer mixed setups.',
+      ],
+      statusEyebrow: 'Current state',
+      statusTitle: 'Rev.A is designed as the first hardware revision',
+      statusText:
+        'The architecture, main components, power domains, trigger paths, and camera outputs are defined in the project documentation. The next important step is proving the design on a physical Rev.A prototype.',
     },
     roadmap: {
       title: 'Project roadmap',
@@ -87,14 +133,59 @@ const messages = {
     },
     home: {
       eyebrow: 'Project Iris',
-      title: 'Программируемый триггер камеры и платформа автоматизации съемки.',
+      productName: 'PhotoTrigger Rev.A',
+      subtitle: 'Программируемый multi-source триггер для фотокамеры',
       intro:
-        'Открытая аппаратная платформа для интервальной, HDR, молниевой, звуковой съемки и внешних событий спуска.',
-      featuresLink: 'Смотреть возможности',
-      roadmapLink: 'Смотреть роадмап',
-      devBlogLink: 'Читать dev-blog',
-      docsLink: 'Открыть документацию',
-      adminLink: 'Админ-панель',
+        'Автономный контроллер камеры, который может сделать кадр по времени, свету, звуку, внешнему датчику, удаленной команде или ручному спуску.',
+      renderAlt: 'Рендер финального устройства PhotoTrigger Rev.A',
+      renderCaption: 'Рендер концепта, не реальное фото устройства.',
+      signalTitle: 'Время, свет, звук, внешний датчик, удаленная команда',
+      flowEyebrow: 'Как это работает',
+      flowTitle: 'От события к кадру в одной понятной цепочке',
+      flowIntro:
+        'В основе устройства единый Trigger Manager: любой источник проходит один путь от обнаружения события до действия камеры.',
+      steps: [
+        {
+          title: 'Выберите источник события',
+          text: 'Интервал, расписание RTC, датчик молнии, звуковой триггер, внешний вход 5-24 В, Wi-Fi, Bluetooth LE или управление на корпусе.',
+        },
+        {
+          title: 'Настройте действие камеры',
+          text: 'Focus, Shutter, задержки, cooldown, повторения, Bulb-выдержка или заранее сохраненный профиль съемки.',
+        },
+        {
+          title: 'Поставьте PhotoTrigger на дежурство',
+          text: 'Устройство работает самостоятельно: есть OLED 128x64, локальное управление, и ему не нужен постоянный телефон, компьютер, облако или открытый браузер.',
+        },
+        {
+          title: 'Событие проходит через быстрый аппаратный путь',
+          text: 'Молния и звук определяются аналоговыми трактами и компараторами, а ESP32-S3 отвечает за программы, профили, web-интерфейс, BLE, логи и OTA.',
+        },
+        {
+          title: 'Камера срабатывает безопасно',
+          text: 'PhotoTrigger управляет Focus и Shutter через изолированные проводные выходы или отправляет IR-команды, если камера их поддерживает.',
+        },
+      ],
+      capabilitiesTitle: 'Что объединяет устройство',
+      capabilities: [
+        'Интервалометр и съемка по расписанию с отдельным always-on RTC',
+        'Lightning trigger с регулируемой чувствительностью и мониторингом уровня света',
+        'Sound trigger с настраиваемым порогом и визуальной обратной связью',
+        'Изолированный внешний вход для датчиков, лабораторной автоматики и пользовательской электроники',
+        'Проводное управление Focus/Shutter и трехнаправленный IR-выход',
+        'Интерфейс на устройстве, Wi-Fi, Bluetooth LE, локальные профили и место под OTA-прошивки',
+      ],
+      advantagesTitle: 'Почему это полезно',
+      advantages: [
+        'Одно компактное устройство заменяет несколько отдельных аксессуаров камеры.',
+        'Камеру можно оставлять без присмотра для timelapse, рассветов, ночной съемки, погоды и лабораторных сценариев.',
+        'Питание может полностью выключаться до момента, когда RTC разбудит устройство по расписанию.',
+        'Камера и внешний вход электрически изолированы, что безопаснее для смешанных схем и разных моделей камер.',
+      ],
+      statusEyebrow: 'Текущий статус',
+      statusTitle: 'Rev.A проектируется как первая аппаратная ревизия',
+      statusText:
+        'В документации уже определены архитектура, основные компоненты, домены питания, триггерные тракты и выходы камеры. Следующий важный шаг - подтвердить решения на физическом прототипе Rev.A.',
     },
     roadmap: {
       title: 'Роадмап проекта',
