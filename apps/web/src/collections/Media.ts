@@ -14,8 +14,16 @@ export const Media: CollectionConfig = {
       ru: 'Медиафайлы',
     },
   },
+  admin: {
+    useAsTitle: 'alt',
+    defaultColumns: ['filename', 'alt', 'updatedAt'],
+    group: 'Сайт',
+  },
   access: {
     read: () => true,
+    create: ({ req: { user } }) => Boolean(user),
+    update: ({ req: { user } }) => Boolean(user),
+    delete: ({ req: { user } }) => Boolean(user),
   },
   fields: [
     {

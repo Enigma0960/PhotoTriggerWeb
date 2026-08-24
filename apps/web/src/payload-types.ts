@@ -95,12 +95,14 @@ export interface Config {
     'site-settings': SiteSettings;
     header: Header;
     footer: Footer;
+    'home-page': HomePage;
     roadmap: Roadmap;
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    'home-page': HomePageSelect<false> | HomePageSelect<true>;
     roadmap: RoadmapSelect<false> | RoadmapSelect<true>;
   };
   locale: 'en' | 'ru';
@@ -513,6 +515,61 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-page".
+ */
+export interface HomePage {
+  id: number;
+  eyebrow?: string | null;
+  productName?: string | null;
+  subtitle?: string | null;
+  intro?: string | null;
+  signalTitle?: string | null;
+  heroImage?: (number | null) | Media;
+  heroImageAlt?: string | null;
+  heroImageCaption?: string | null;
+  flowEyebrow?: string | null;
+  flowTitle?: string | null;
+  flowIntro?: string | null;
+  steps?:
+    | {
+        title?: string | null;
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  capabilitiesTitle?: string | null;
+  capabilities?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  advantagesTitle?: string | null;
+  advantages?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  galleryEyebrow?: string | null;
+  galleryTitle?: string | null;
+  galleryIntro?: string | null;
+  galleryItems?:
+    | {
+        image?: (number | null) | Media;
+        alt?: string | null;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  statusEyebrow?: string | null;
+  statusTitle?: string | null;
+  statusText?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "roadmap".
  */
 export interface Roadmap {
@@ -584,6 +641,61 @@ export interface FooterSelect<T extends boolean = true> {
         newTab?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-page_select".
+ */
+export interface HomePageSelect<T extends boolean = true> {
+  eyebrow?: T;
+  productName?: T;
+  subtitle?: T;
+  intro?: T;
+  signalTitle?: T;
+  heroImage?: T;
+  heroImageAlt?: T;
+  heroImageCaption?: T;
+  flowEyebrow?: T;
+  flowTitle?: T;
+  flowIntro?: T;
+  steps?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        id?: T;
+      };
+  capabilitiesTitle?: T;
+  capabilities?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  advantagesTitle?: T;
+  advantages?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  galleryEyebrow?: T;
+  galleryTitle?: T;
+  galleryIntro?: T;
+  galleryItems?:
+    | T
+    | {
+        image?: T;
+        alt?: T;
+        caption?: T;
+        id?: T;
+      };
+  statusEyebrow?: T;
+  statusTitle?: T;
+  statusText?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -449,6 +449,43 @@ article span {
   border-bottom: 1px solid var(--line);
 }
 
+.home-gallery {
+  padding-bottom: 74px;
+}
+
+.home-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.home-gallery__item {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.home-gallery__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1448 / 1086;
+  object-fit: cover;
+}
+
+.home-gallery__item figcaption {
+  min-height: 56px;
+  margin: 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .home-status {
   max-width: 860px;
 }
@@ -856,6 +893,10 @@ article span {
   .home-summary-grid {
     grid-template-columns: 1fr;
     gap: 46px;
+  }
+
+  .home-gallery__grid {
+    grid-template-columns: 1fr;
   }
 
   .site-header__inner {

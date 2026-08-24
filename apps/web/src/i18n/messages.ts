@@ -29,6 +29,24 @@ const messages = {
       renderAlt: 'Render of the final PhotoTrigger Rev.A device',
       renderCaption: 'Concept render, not an actual product photo.',
       signalTitle: 'Time, light, sound, external sensor, remote command',
+      galleryEyebrow: 'Reference images',
+      galleryTitle: 'Interface and product references in one place',
+      galleryIntro:
+        'These examples are used as visual references while the hardware, enclosure and interface are being refined.',
+      galleryItems: [
+        {
+          alt: 'PhotoTrigger reference image, example 1',
+          caption: 'Reference example 1',
+        },
+        {
+          alt: 'PhotoTrigger reference image, example 2',
+          caption: 'Reference example 2',
+        },
+        {
+          alt: 'PhotoTrigger reference image, example 3',
+          caption: 'Reference example 3',
+        },
+      ],
       flowEyebrow: 'How it works',
       flowTitle: 'From event to frame in one predictable chain',
       flowIntro:
@@ -140,6 +158,24 @@ const messages = {
       renderAlt: 'Рендер финального устройства PhotoTrigger Rev.A',
       renderCaption: 'Рендер концепта, не реальное фото устройства.',
       signalTitle: 'Время, свет, звук, внешний датчик, удаленная команда',
+      galleryEyebrow: 'Референсы',
+      galleryTitle: 'Примеры интерфейса и визуальных состояний',
+      galleryIntro:
+        'Эти изображения помогают сверять внешний вид устройства, интерфейс и сценарии использования во время разработки.',
+      galleryItems: [
+        {
+          alt: 'Референс PhotoTrigger, пример 1',
+          caption: 'Пример референса 1',
+        },
+        {
+          alt: 'Референс PhotoTrigger, пример 2',
+          caption: 'Пример референса 2',
+        },
+        {
+          alt: 'Референс PhotoTrigger, пример 3',
+          caption: 'Пример референса 3',
+        },
+      ],
       flowEyebrow: 'Как это работает',
       flowTitle: 'От события к кадру в одной понятной цепочке',
       flowIntro:

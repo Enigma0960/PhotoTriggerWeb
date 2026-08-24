@@ -10,6 +10,7 @@ import { ru } from '@payloadcms/translations/languages/ru'
 
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
+import { HomePage } from './globals/HomePage'
 import { Roadmap } from './globals/Roadmap'
 import { SiteSettings } from './globals/SiteSettings'
 
@@ -71,7 +72,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Features, DevBlogPosts],
-  globals: [SiteSettings, Header, Footer, Roadmap],
+  globals: [SiteSettings, Header, Footer, HomePage, Roadmap],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
