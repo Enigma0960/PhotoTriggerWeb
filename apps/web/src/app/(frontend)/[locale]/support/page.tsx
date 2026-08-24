@@ -28,10 +28,39 @@ function getText(value: string | null | undefined, fallback: string) {
   return value?.trim() || fallback
 }
 
+function isFeedbackHref(href: string) {
+  const normalizedHref = href.replace(/\/$/, '')
+
+  return (
+    normalizedHref === '/feedback' ||
+    normalizedHref === '/en/feedback' ||
+    normalizedHref === '/ru/feedback'
+  )
+}
+
+function normalizeInternalHref(href: string) {
+  return href.replace(/^\/(en|ru)(?=\/)/, '').replace(/\/$/, '') || '/'
+}
+
+function findSupportOptionDefault(
+  fallback: readonly { ctaLabel: string; href: string; text: string; title: string }[],
+  href: string,
+) {
+  const normalizedHref = normalizeInternalHref(href)
+
+  return fallback.find((option) => normalizeInternalHref(option.href) === normalizedHref)
+}
+
+function localizeDefaultText(value: string, localizedFallback: string, englishFallback?: string) {
+  return englishFallback && value === englishFallback ? localizedFallback : value
+}
+
 function getSupportOptions(
+  locale: Locale,
   value: SupportPage['supportOptions'],
   fallback: readonly { ctaLabel: string; href: string; text: string; title: string }[],
 ): SupportOptionViewModel[] {
+  const englishFallback = getMessages('en').support.supportOptions
   const options =
     value?.flatMap((option, index) => {
       const ctaLabel = option.ctaLabel?.trim()
@@ -39,18 +68,27 @@ function getSupportOptions(
       const text = option.text?.trim()
       const title = option.title?.trim()
 
-      if (!ctaLabel || !href || !text || !title) {
+      if (!ctaLabel || !href || !text || !title || isFeedbackHref(href)) {
         return []
       }
 
+      const localizedDefault = findSupportOptionDefault(fallback, href)
+      const englishDefault = locale === 'en' ? undefined : findSupportOptionDefault(englishFallback, href)
+
       return [
         {
-          ctaLabel,
+          ctaLabel: localizedDefault
+            ? localizeDefaultText(ctaLabel, localizedDefault.ctaLabel, englishDefault?.ctaLabel)
+            : ctaLabel,
           href,
           key: option.id || `support-option-${index}`,
           newTab: option.newTab,
-          text,
-          title,
+          text: localizedDefault
+            ? localizeDefaultText(text, localizedDefault.text, englishDefault?.text)
+            : text,
+          title: localizedDefault
+            ? localizeDefaultText(title, localizedDefault.title, englishDefault?.title)
+            : title,
         },
       ]
     }) ?? []
@@ -59,11 +97,13 @@ function getSupportOptions(
     return options
   }
 
-  return fallback.map((option, index) => ({
-    ...option,
-    key: `fallback-support-option-${index}`,
-    newTab: false,
-  }))
+  return fallback
+    .filter((option) => !isFeedbackHref(option.href))
+    .map((option, index) => ({
+      ...option,
+      key: `fallback-support-option-${index}`,
+      newTab: false,
+    }))
 }
 
 function isExternalHref(href: string) {
@@ -114,7 +154,7 @@ export default async function SupportPage({ params }: Props) {
 
   const support = getMessages(locale).support
   const supportPage = await getSupportPage(locale)
-  const supportOptions = getSupportOptions(supportPage?.supportOptions, support.supportOptions)
+  const supportOptions = getSupportOptions(locale, supportPage?.supportOptions, support.supportOptions)
 
   return (
     <main className="support-page">

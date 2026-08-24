@@ -104,12 +104,6 @@ const messages = {
         'The most useful support right now is practical feedback, testing ideas and help finding real shooting scenarios.',
       supportOptions: [
         {
-          title: 'Send an idea',
-          text: 'Describe a camera scenario, sensor setup or field problem that PhotoTrigger should support.',
-          href: '/feedback',
-          ctaLabel: 'Open feedback',
-        },
-        {
           title: 'Follow development',
           text: 'Read engineering notes and implementation updates as the prototype moves forward.',
           href: '/dev-blog',
@@ -281,12 +275,6 @@ const messages = {
       supportOptionsIntro:
         'Сейчас особенно полезны практическая обратная связь, идеи тестирования и реальные сценарии съемки.',
       supportOptions: [
-        {
-          title: 'Отправить идею',
-          text: 'Опишите сценарий съемки, набор датчиков или полевую проблему, которую должен закрывать PhotoTrigger.',
-          href: '/feedback',
-          ctaLabel: 'Открыть форму',
-        },
         {
           title: 'Следить за разработкой',
           text: 'Читайте инженерные заметки и обновления реализации по мере движения к прототипу.',
