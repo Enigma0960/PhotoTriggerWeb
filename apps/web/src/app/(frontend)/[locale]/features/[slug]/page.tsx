@@ -1,6 +1,7 @@
 import { RichText } from '@/components/RichText'
 import { fallbackLocale, getLocalizedPath, isLocale } from '@/i18n/config'
 import { getMessages } from '@/i18n/messages'
+import { getFeatureCategoryTitle } from '@/lib/featureCategories'
 import { resolveNavigationHref } from '@/lib/navigation'
 import config from '@/payload.config'
 
@@ -41,6 +42,7 @@ async function getFeature(locale: string, slug: string) {
         },
       ],
     },
+    depth: 1,
     limit: 1,
   })
 
@@ -82,7 +84,7 @@ export default async function FeaturePage({ params }: Props) {
       </nav>
 
       <header>
-        <p>{messages.categories[feature.category]}</p>
+        <p>{getFeatureCategoryTitle(feature.category, messages.features.uncategorized)}</p>
 
         <h1>{feature.title}</h1>
 

@@ -17,6 +17,7 @@ import { SiteSettings } from './globals/SiteSettings'
 import { SupportPage } from './globals/SupportPage'
 
 import { DevBlogPosts } from './collections/DevBlogPosts'
+import { FeatureCategories } from './collections/FeatureCategories'
 import { Features } from './collections/Features'
 import { FeedbackMessages } from './collections/FeedbackMessages'
 import { Media } from './collections/Media'
@@ -75,7 +76,15 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Features, DevBlogPosts, FeedbackMessages, SiteEvents],
+  collections: [
+    Users,
+    Media,
+    FeatureCategories,
+    Features,
+    DevBlogPosts,
+    FeedbackMessages,
+    SiteEvents,
+  ],
   globals: [SiteSettings, Header, Footer, HomePage, Roadmap, SupportPage, AnalyticsSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

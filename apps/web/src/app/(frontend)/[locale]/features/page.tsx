@@ -5,6 +5,7 @@ import { getPayload } from 'payload'
 
 import { fallbackLocale, getLocalizedPath, isLocale } from '@/i18n/config'
 import { getMessages } from '@/i18n/messages'
+import { getFeatureCategoryTitle } from '@/lib/featureCategories'
 
 type Props = {
   params: Promise<{
@@ -48,6 +49,7 @@ export default async function FeaturesPage({ params }: Props) {
       },
     },
     sort: 'order',
+    depth: 1,
     limit: 100,
   })
 
@@ -65,7 +67,7 @@ export default async function FeaturesPage({ params }: Props) {
 
         {result.docs.map((feature) => (
           <article key={feature.id}>
-            <p>{messages.categories[feature.category]}</p>
+            <p>{getFeatureCategoryTitle(feature.category, messages.features.uncategorized)}</p>
 
             <h2>
               <Link href={getLocalizedPath(locale, `/features/${feature.slug}`)}>

@@ -82,6 +82,9 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
     },
 
     description,
+    icons: {
+      icon: '/favicon.svg',
+    },
   }
 }
 
@@ -100,7 +103,8 @@ export default async function RootLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <head>
+      <head />
+      <body>
         <Script
           dangerouslySetInnerHTML={{ __html: themeInitScript }}
           id="iris-theme-init"
@@ -127,8 +131,7 @@ export default async function RootLayout({ children, params }: Props) {
             />
           </>
         )}
-      </head>
-      <body>
+
         <SiteAnalyticsTracker locale={locale} />
 
         <SiteHeader header={header} locale={locale} settings={settings} />

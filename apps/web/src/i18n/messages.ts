@@ -153,6 +153,7 @@ const messages = {
       featured: 'Featured',
       allFeatures: 'All features',
       empty: 'No published features yet.',
+      uncategorized: 'Uncategorized',
       technicalDocumentation: 'Technical documentation',
       documentationIntro:
         'Detailed implementation information is available in the Project Iris documentation.',
@@ -164,13 +165,6 @@ const messages = {
       prototype: 'Prototype',
       testing: 'Testing',
       ready: 'Ready',
-    },
-    categories: {
-      trigger: 'Trigger',
-      camera: 'Camera',
-      automation: 'Automation',
-      connectivity: 'Connectivity',
-      system: 'System',
     },
   },
   ru: {
@@ -324,6 +318,7 @@ const messages = {
       featured: 'Основная функция',
       allFeatures: 'Все возможности',
       empty: 'Опубликованных возможностей пока нет.',
+      uncategorized: 'Без категории',
       technicalDocumentation: 'Техническая документация',
       documentationIntro: 'Подробная информация о реализации доступна в документации Project Iris.',
       openDocumentation: 'Открыть техническую документацию',
@@ -334,13 +329,6 @@ const messages = {
       prototype: 'Прототип',
       testing: 'Тестирование',
       ready: 'Готово',
-    },
-    categories: {
-      trigger: 'Триггер',
-      camera: 'Камера',
-      automation: 'Автоматизация',
-      connectivity: 'Подключение',
-      system: 'Система',
     },
   },
 } as const

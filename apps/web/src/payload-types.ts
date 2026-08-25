@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    'feature-categories': FeatureCategory;
     features: Feature;
     'dev-blog-posts': DevBlogPost;
     'feedback-messages': FeedbackMessage;
@@ -82,6 +83,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    'feature-categories': FeatureCategoriesSelect<false> | FeatureCategoriesSelect<true>;
     features: FeaturesSelect<false> | FeaturesSelect<true>;
     'dev-blog-posts': DevBlogPostsSelect<false> | DevBlogPostsSelect<true>;
     'feedback-messages': FeedbackMessagesSelect<false> | FeedbackMessagesSelect<true>;
@@ -187,6 +189,22 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "feature-categories".
+ */
+export interface FeatureCategory {
+  id: number;
+  title: string;
+  description?: string | null;
+  /**
+   * Stable category key, e.g. trigger, camera or power.
+   */
+  slug: string;
+  order: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "features".
  */
 export interface Feature {
@@ -209,7 +227,10 @@ export interface Feature {
     [k: string]: unknown;
   };
   slug: string;
-  category: 'trigger' | 'camera' | 'automation' | 'connectivity' | 'system';
+  /**
+   * Категории редактируются отдельно в разделе "Категории возможностей".
+   */
+  category: number | FeatureCategory;
   developmentStatus: 'planned' | 'design' | 'prototype' | 'testing' | 'ready';
   image?: (number | null) | Media;
   featured?: boolean | null;
@@ -334,6 +355,10 @@ export interface PayloadLockedDocument {
         value: number | Media;
       } | null)
     | ({
+        relationTo: 'feature-categories';
+        value: number | FeatureCategory;
+      } | null)
+    | ({
         relationTo: 'features';
         value: number | Feature;
       } | null)
@@ -430,6 +455,18 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "feature-categories_select".
+ */
+export interface FeatureCategoriesSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  slug?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

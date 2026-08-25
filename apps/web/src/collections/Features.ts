@@ -20,6 +20,7 @@ export const Features: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'category', 'developmentStatus', 'featured', 'order'],
+    group: 'Сайт',
   },
 
   versions: {
@@ -93,45 +94,12 @@ export const Features: CollectionConfig = {
                 en: 'Category',
                 ru: 'Категория',
               },
-              type: 'select',
+              type: 'relationship',
               required: true,
-              options: [
-                {
-                  label: {
-                    en: 'Trigger',
-                    ru: 'Триггер',
-                  },
-                  value: 'trigger',
-                },
-                {
-                  label: {
-                    en: 'Camera',
-                    ru: 'Камера',
-                  },
-                  value: 'camera',
-                },
-                {
-                  label: {
-                    en: 'Automation',
-                    ru: 'Автоматизация',
-                  },
-                  value: 'automation',
-                },
-                {
-                  label: {
-                    en: 'Connectivity',
-                    ru: 'Подключение',
-                  },
-                  value: 'connectivity',
-                },
-                {
-                  label: {
-                    en: 'System',
-                    ru: 'Система',
-                  },
-                  value: 'system',
-                },
-              ],
+              relationTo: 'feature-categories',
+              admin: {
+                description: 'Категории редактируются отдельно в разделе "Категории возможностей".',
+              },
             },
             {
               name: 'developmentStatus',
