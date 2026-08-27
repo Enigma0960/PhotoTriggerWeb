@@ -228,7 +228,7 @@ export interface Feature {
   };
   slug: string;
   /**
-   * Категории редактируются отдельно в разделе "Категории возможностей".
+   * Категории редактируются отдельно в разделе "Категории".
    */
   category: number | FeatureCategory;
   developmentStatus: 'planned' | 'design' | 'prototype' | 'testing' | 'ready';

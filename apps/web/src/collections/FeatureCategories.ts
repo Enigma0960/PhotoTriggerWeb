@@ -7,12 +7,12 @@ export const FeatureCategories: CollectionConfig = {
 
   labels: {
     singular: {
-      en: 'Feature Category',
-      ru: 'Категория возможностей',
+      en: 'Category',
+      ru: 'Категория',
     },
     plural: {
-      en: 'Feature Categories',
-      ru: 'Категории возможностей',
+      en: 'Categories',
+      ru: 'Категории',
     },
   },
 

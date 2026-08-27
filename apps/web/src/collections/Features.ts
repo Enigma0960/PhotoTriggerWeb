@@ -98,7 +98,7 @@ export const Features: CollectionConfig = {
               required: true,
               relationTo: 'feature-categories',
               admin: {
-                description: 'Категории редактируются отдельно в разделе "Категории возможностей".',
+                description: 'Категории редактируются отдельно в разделе "Категории".',
               },
             },
             {
